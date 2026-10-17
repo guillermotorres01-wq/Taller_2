@@ -32,7 +32,32 @@ public class Sistema {
         System.out.println("  Participantes cargados: " + this.cantParticipantes);
         System.out.println("  Registros cargados: " + this.cantConsumos);
         System.out.println("============================================");
-	
 	}
 	
+	private void cargarParticipantes() {
+		File archivo = new File("Participantes.txt");
+		//H.3 PAUTA
+		if (!archivo.exists()) {
+			System.out.println(">> ADVERTENCIA: no se encontro el archivo 'Participantes.txt'.");
+			return;
+		}
+	}
+	
+	try {
+		Scanner lector = new Scanner(archivo);
+		while(lector.hasNextLine()) {
+			String linea = lector.nextLine().trim();
+			if (linea,isEmpty()) {
+				continue;
+			}
+			
+			if (this.cantParticipantes < 200) {
+                this.participantes[this.cantParticipantes] = new Participante(linea);
+                this.cantParticipantes++;
+			}
+		}
+		lector.close();
+	} catch (IOException e) {
+		System.out.println(">> Error al leer Participantes.txt: " + e.getMessage());
+	}
 }
