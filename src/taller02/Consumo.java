@@ -11,7 +11,7 @@ public abstract class Consumo {
 	}
 	
 	public abstract double calcularKcal();
-	public abstract String toFormatoArchivo();
+	public abstract String FormatoArchivo();
 
 	public String getConsumidor() {
 		return consumidor;
